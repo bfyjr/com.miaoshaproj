@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+
+<generatorConfiguration>
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <!--        指向数据库-->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/miaosha?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC"
+                        userId="root"
+                        password="root">
+        </jdbcConnection>
+
+
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+        <!--生成POJO-->
+        <!--        targetPackage表示生成的dataobject(POJO)放在哪个包;  targetProject哪个工程-->
+        <javaModelGenerator targetPackage="org.example.dataobject" targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+
+        <!--        sqlMapGenerator映射文件生成器，就是Dao.xml-->
+        <sqlMapGenerator targetPackage="mapping"  targetProject=".\src\main\resources">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+
+        <!--        javaClientGenerator生成Dao接口的-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="org.example.dao"  targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+
+        <!--     tableName指定逆向生成哪个表  domainObjectName指定这个表生成的对象POJO名 -->
+<!--        <table tableName="user_info" domainObjectName="UserDO" enableCountByExample="false" enableDeleteByExample="false"-->
+<!--        enableUpdateByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">-->
+<!--        </table>-->
+
+<!--        <table tableName="user_password" domainObjectName="UserPassword" enableCountByExample="false" enableDeleteByExample="false"-->
+<!--               enableUpdateByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>-->
+
+<!--        <table tableName="item_info" domainObjectName="ItemDO" enableCountByExample="false" enableDeleteByExample="false"-->
+<!--               enableUpdateByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">-->
+<!--        </table>-->
+<!--        <table tableName="stock_info" domainObjectName="ItemStockDO" enableCountByExample="false" enableDeleteByExample="false"-->
+<!--               enableUpdateByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">-->
+<!--        </table>-->
+<!--        <table tableName="order_info" domainObjectName="OrderDO" enableCountByExample="false" enableDeleteByExample="false"-->
+<!--               enableUpdateByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">-->
+<!--        </table>-->
+        <table tableName="stock_log" domainObjectName="StockLogDO" enableCountByExample="false" enableDeleteByExample="false"
+               enableUpdateByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        </table>
+
+
+
+    </context>
+</generatorConfiguration>
